@@ -10,8 +10,13 @@ const EditableImage = ({ srcKey, defaultSrc, editMode, alt, className, style }) 
 
   const handleClick = () => {
     if (!editMode) return;
-    // Trigger the hidden file input
-    fileInputRef.current.click();
+    
+    // Ask for confirmation before changing the image
+    const confirmChange = window.confirm("Do you want to change this image?");
+    if (confirmChange) {
+      // Trigger the hidden file input
+      fileInputRef.current.click();
+    }
   };
 
   const handleFileChange = (e) => {
